@@ -30,6 +30,7 @@ namespace ShowComputerTemp
             textBox_cpu3.Text = temperature[2];
             textBox_cpu4.Text = temperature[3];
             textBox_cpu5.Text = temperature[4];
+            textBox_cpucnt.Text = comMonitor.getCounter();
             if(Int32.TryParse(temperature[4],out cpuTemp))
             {
                 if(cpuTemp > 75)

@@ -42,6 +42,7 @@
             this.textBox_cpu5 = new System.Windows.Forms.TextBox();
             this.label_maxCpu = new System.Windows.Forms.Label();
             this.label_maxGpu = new System.Windows.Forms.Label();
+            this.textBox_cpucnt = new System.Windows.Forms.TextBox();
             timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // label_gpu
             // 
             this.label_gpu.AutoSize = true;
-            this.label_gpu.Location = new System.Drawing.Point(194, 29);
+            this.label_gpu.Location = new System.Drawing.Point(196, 56);
             this.label_gpu.Name = "label_gpu";
             this.label_gpu.Size = new System.Drawing.Size(30, 12);
             this.label_gpu.TabIndex = 1;
@@ -80,7 +81,7 @@
             // 
             // textBox_gpu
             // 
-            this.textBox_gpu.Location = new System.Drawing.Point(230, 26);
+            this.textBox_gpu.Location = new System.Drawing.Point(232, 53);
             this.textBox_gpu.Name = "textBox_gpu";
             this.textBox_gpu.ReadOnly = true;
             this.textBox_gpu.Size = new System.Drawing.Size(100, 21);
@@ -89,7 +90,7 @@
             // label_ram
             // 
             this.label_ram.AutoSize = true;
-            this.label_ram.Location = new System.Drawing.Point(193, 56);
+            this.label_ram.Location = new System.Drawing.Point(195, 83);
             this.label_ram.Name = "label_ram";
             this.label_ram.Size = new System.Drawing.Size(31, 12);
             this.label_ram.TabIndex = 4;
@@ -97,7 +98,7 @@
             // 
             // textBox_ram
             // 
-            this.textBox_ram.Location = new System.Drawing.Point(230, 53);
+            this.textBox_ram.Location = new System.Drawing.Point(232, 80);
             this.textBox_ram.Name = "textBox_ram";
             this.textBox_ram.ReadOnly = true;
             this.textBox_ram.Size = new System.Drawing.Size(100, 21);
@@ -153,11 +154,21 @@
             this.label_maxGpu.TabIndex = 7;
             this.label_maxGpu.Text = "maxGpu";
             // 
+            // textBox_cpucnt
+            // 
+            this.textBox_cpucnt.CausesValidation = false;
+            this.textBox_cpucnt.Location = new System.Drawing.Point(197, 26);
+            this.textBox_cpucnt.Name = "textBox_cpucnt";
+            this.textBox_cpucnt.ReadOnly = true;
+            this.textBox_cpucnt.Size = new System.Drawing.Size(100, 21);
+            this.textBox_cpucnt.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 177);
+            this.Controls.Add(this.textBox_cpucnt);
             this.Controls.Add(this.label_maxGpu);
             this.Controls.Add(this.label_maxCpu);
             this.Controls.Add(this.textBox_ram);
@@ -192,6 +203,7 @@
         private System.Windows.Forms.TextBox textBox_cpu5;
         private System.Windows.Forms.Label label_maxCpu;
         private System.Windows.Forms.Label label_maxGpu;
+        private System.Windows.Forms.TextBox textBox_cpucnt;
     }
 }
 

@@ -57,6 +57,10 @@ namespace ShowComputerTemp
             return temperature;
         }
 
+        public String getCounter()
+        {
+           return perfCpuCounter.NextValue().ToString();
+        }
         /// <summary>
         /// This method is used to get cpu and memory load
         /// from the Performance Monitor
