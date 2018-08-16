@@ -59,7 +59,7 @@ namespace ShowComputerTemp
 
         public String getCounter()
         {
-           return perfCpuCounter.NextValue().ToString();
+           return perfCpuCounter.NextValue().ToString("0");
         }
         /// <summary>
         /// This method is used to get cpu and memory load
