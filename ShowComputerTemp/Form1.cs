@@ -15,11 +15,15 @@ namespace ShowComputerTemp
         ComMonitor comMonitor;
         int cpuTemp;
         int gpuTemp;
+        int cpuOverTempSecond;
+        int gpuOverTempSecond;
 
         public Form1()
         {
             InitializeComponent();
             comMonitor = new ComMonitor();
+            cpuOverTempSecond = 0;
+            gpuOverTempSecond = 0;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -37,10 +41,12 @@ namespace ShowComputerTemp
                 {
                     textBox_cpu5.BackColor = Color.Yellow;
                     label_maxCpu.Text = cpuTemp.ToString();
+                    cpuOverTempSecond += 2;
                 }
-                if(cpuTemp > 83)
+                if(cpuTemp > 85)
                 {
                     textBox_cpu5.BackColor = Color.Red;
+                    cpuOverTempSecond += 2;
                 }
             }
 
@@ -51,14 +57,18 @@ namespace ShowComputerTemp
                 {
                     textBox_gpu.BackColor = Color.Yellow;
                     label_maxGpu.Text = gpuTemp.ToString();
+                    gpuOverTempSecond += 2;
                 }
-                if (gpuTemp > 83)
+                if (gpuTemp > 85)
                 {
                     textBox_gpu.BackColor = Color.Red;
+                    gpuOverTempSecond += 2;
                 }
             }
             
             textBox_ram.Text = comMonitor.getRamInfo();
+            textBox_cpuOverTime.Text = (cpuOverTempSecond/60).ToString("0");
+            textBox_gpuOverTime.Text = (gpuOverTempSecond/60).ToString("0"); ;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
