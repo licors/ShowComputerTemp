@@ -17,6 +17,12 @@ namespace ShowComputerTemp
         int gpuTemp;
         int cpuOverTempSecond;
         int gpuOverTempSecond;
+        int cpuMax = 0;
+        int gpuMax = 0;
+        int cpuYellow = 73;
+        int cpuRed = 84;
+        int gpuYellow = 73;
+        int gpuRed = 84;
 
         public Form1()
         {
@@ -35,17 +41,25 @@ namespace ShowComputerTemp
             textBox_cpu4.Text = temperature[3];
             textBox_cpu5.Text = temperature[4];
             textBox_cpucnt.Text = comMonitor.getCounter();
+
             if(Int32.TryParse(temperature[4],out cpuTemp))
             {
-                if(cpuTemp > 75)
+                if(cpuTemp > cpuYellow)
                 {
-                    textBox_cpu5.BackColor = Color.Yellow;
-                    label_maxCpu.Text = cpuTemp.ToString();
-                    cpuOverTempSecond += 2;
-                }
-                if(cpuTemp > 85)
-                {
-                    textBox_cpu5.BackColor = Color.Red;
+                    if(cpuTemp > cpuRed)
+                    {
+                        textBox_cpu5.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        textBox_cpu5.BackColor = Color.Yellow;
+                    }
+                    
+                    if(cpuMax < cpuTemp)
+                    {
+                        cpuMax = cpuTemp;
+                    }
+                    label_maxCpu.Text = cpuMax.ToString();
                     cpuOverTempSecond += 2;
                 }
             }
@@ -53,15 +67,22 @@ namespace ShowComputerTemp
             textBox_gpu.Text = temperature[5];
             if (Int32.TryParse(temperature[5], out gpuTemp))
             {
-                if (gpuTemp > 75)
+                if (gpuTemp > gpuYellow)
                 {
-                    textBox_gpu.BackColor = Color.Yellow;
-                    label_maxGpu.Text = gpuTemp.ToString();
-                    gpuOverTempSecond += 2;
-                }
-                if (gpuTemp > 85)
-                {
-                    textBox_gpu.BackColor = Color.Red;
+                    if(gpuTemp > gpuRed)
+                    {
+                        textBox_gpu.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        textBox_gpu.BackColor = Color.Yellow;
+                    }
+
+                    if (gpuMax < gpuTemp)
+                    {
+                        gpuMax = gpuTemp;
+                    }
+                    label_maxGpu.Text = gpuMax.ToString();
                     gpuOverTempSecond += 2;
                 }
             }
@@ -74,6 +95,14 @@ namespace ShowComputerTemp
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             comMonitor.close();
+        }
+
+        private void button_clear_Click(object sender, EventArgs e)
+        {
+            textBox_cpu5.BackColor = Color.LightGray;
+            textBox_gpu.BackColor = Color.LightGray;
+            cpuMax = 0;
+            gpuMax = 0;
         }
     }
 }
